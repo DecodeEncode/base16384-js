@@ -1,6 +1,6 @@
 # The base16384 format, as implemented here
 
-This note describes the format as base16384-js reads and writes it. The behaviour of the reference command-line tool described here was determined by testing version 2.3.2 from the outside, using `tools/conformance.mjs`.
+This note describes the format as base16384-js reads and writes it. The behaviour of the reference command-line tool ([fumiama/base16384](https://github.com/fumiama/base16384)) described here was determined by testing version 2.3.2 from the outside, using `tools/conformance.mjs`.
 
 ## Alphabet
 

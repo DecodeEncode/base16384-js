@@ -82,6 +82,10 @@ Plain JavaScript encodes several hundred megabytes per second on a typical compu
 
 With a C compiler and `git`, `make reference` fetches and builds the reference tool 2.3.2 in an ignored folder. It is used only for comparison and is never part of this project. `make conformance` then compares the two on random data in both directions, and `make vectors` regenerates `test/vectors.json` from it. The same check runs on every push.
 
+## Credits
+
+The base16384 format and its reference implementation, [fumiama/base16384](https://github.com/fumiama/base16384), are by Fumiama Minamoto. The conformance checks in this project compare against that tool, version 2.3.2.
+
 ## Licence
 
 Apache License 2.0, see [LICENSE](LICENSE). This implementation was written from the format's published description and shares no code with other implementations.
