@@ -1,6 +1,6 @@
 # base16384-js
 
-Encode any data as printable CJK text in the base16384 format, and decode it back, in plain JavaScript with no dependencies.
+Encode any data as printable Chinese characters in the base16384 format, and decode it back, in plain JavaScript with no dependencies.
 
 ```
 "12345678"   →   婌焳廔萷尀㴁
