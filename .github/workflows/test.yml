@@ -1,0 +1,34 @@
+name: test
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - run: make test
+      - name: command line round trip
+        run: |
+          head -c 1000003 /dev/urandom > sample.bin
+          node bin/base16384.mjs -e sample.bin sample.txt
+          node bin/base16384.mjs -d sample.txt | cmp - sample.bin
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: make reference
+      - run: make conformance
+      - name: vectors still match the reference
+        run: make vectors && git diff --exit-code -- test/vectors.json

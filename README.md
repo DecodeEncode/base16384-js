@@ -17,7 +17,7 @@ The output is compatible with the reference command-line tool in both directions
 Import the module straight from the published site. The `v1` path stays compatible for all 1.x releases.
 
 ```js
-import { encode, decode, encodeText, decodeText } from "https://didvc.github.io/base16384-js/v1/base16384.mjs";
+import { encode, decode, encodeText, decodeText } from "https://decodeencode.github.io/base16384-js/v1/base16384.mjs";
 
 encodeText("12345678");          // "婌焳廔萷尀㴁"
 decodeText("婌焳廔萷尀㴁");         // "12345678"
@@ -47,7 +47,7 @@ Decoding ignores whitespace, so text that was wrapped, indented or pasted with l
 Streams produce exactly the same result as one-shot calls, wherever the chunk boundaries fall. To encode a file that a user picks:
 
 ```js
-import { EncoderStream } from "https://didvc.github.io/base16384-js/v1/base16384.mjs";
+import { EncoderStream } from "https://decodeencode.github.io/base16384-js/v1/base16384.mjs";
 
 const text = await new Response(
   file.stream().pipeThrough(new EncoderStream()).pipeThrough(new TextEncoderStream()),

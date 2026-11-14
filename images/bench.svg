@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="350" viewBox="0 0 760 350" font-family="sans-serif" role="img" aria-label="Throughput at 1 MiB: base16384 compared with base64 and hex">
+<rect width="760" height="350" rx="8" fill="#f7f6f3"/>
+<text x="24" y="34" font-size="15" fill="#1b1d21">Throughput at 1 MiB (MB/s of binary data)</text>
+<text x="24" y="54" font-size="11" fill="#5d636c">JavaScript runtime v24.18.0, x64. base64 and hex are the runtime’s native built-ins; this library is plain JavaScript.</text>
+<text x="24" y="94" font-size="11" letter-spacing="1.5" fill="#5d636c">ENCODE</text>
+<text x="140" y="119" text-anchor="end" font-size="12" fill="#1b1d21">base16384</text>
+<rect x="150" y="106" width="39.9" height="18" rx="2" fill="#b0402f"/>
+<text x="195.88730815899902" y="119" font-size="12" fill="#1b1d21">572</text>
+<text x="140" y="149" text-anchor="end" font-size="12" fill="#1b1d21">base64</text>
+<rect x="150" y="136" width="505.0" height="18" rx="2" fill="#7b8794"/>
+<text x="661.0319919414337" y="149" font-size="12" fill="#1b1d21">7,247</text>
+<text x="140" y="179" text-anchor="end" font-size="12" fill="#1b1d21">hex</text>
+<rect x="150" y="166" width="343.2" height="18" rx="2" fill="#7b8794"/>
+<text x="499.2010197293619" y="179" font-size="12" fill="#1b1d21">4,925</text>
+<text x="24" y="218" font-size="11" letter-spacing="1.5" fill="#5d636c">DECODE</text>
+<text x="140" y="243" text-anchor="end" font-size="12" fill="#1b1d21">base16384</text>
+<rect x="150" y="230" width="25.4" height="18" rx="2" fill="#b0402f"/>
+<text x="181.395865515476" y="243" font-size="12" fill="#1b1d21">364</text>
+<text x="140" y="273" text-anchor="end" font-size="12" fill="#1b1d21">base64</text>
+<rect x="150" y="260" width="520.0" height="18" rx="2" fill="#7b8794"/>
+<text x="676" y="273" font-size="12" fill="#1b1d21">7,462</text>
+<text x="140" y="303" text-anchor="end" font-size="12" fill="#1b1d21">hex</text>
+<rect x="150" y="290" width="77.5" height="18" rx="2" fill="#7b8794"/>
+<text x="233.51448000000102" y="303" font-size="12" fill="#1b1d21">1,112</text>
+<line x1="150" y1="74" x2="150" y2="322" stroke="#d4d7dc"/>
+</svg>

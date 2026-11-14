@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use base16384-js, please cite it as below."
+type: software
+title: "base16384-js: an encoder and decoder for the base16384 text format in JavaScript"
+abstract: >-
+  An independent, dependency-free JavaScript implementation of the base16384
+  binary-to-text format, which writes 14 bits per character using the code
+  points U+4E00 to U+8DFF. Compatible with the reference command-line tool in
+  both directions, with strict validation, streaming and a command-line tool.
+authors:
+  - name: "Aesthetic Vulpes"
+    website: "https://github.com/didvc/"
+version: 1.0.0
+date-released: 2026-11-01
+license: Apache-2.0
+repository-code: "https://github.com/DecodeEncode/base16384-js"
+url: "https://decodeencode.github.io/base16384-js/"
+keywords:
+  - base16384
+  - binary-to-text encoding
+  - UTF-16
+  - streaming

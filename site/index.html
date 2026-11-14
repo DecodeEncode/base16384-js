@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>base16384-js</title>
+<meta name="description" content="Encode any data as printable CJK text in the base16384 format, in plain JavaScript with no dependencies. Compatible with the reference command-line tool.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://decodeencode.github.io/base16384-js/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="base16384-js">
+<meta property="og:description" content="Encode any data as printable CJK text in the base16384 format, in plain JavaScript with no dependencies.">
+<meta property="og:url" content="https://decodeencode.github.io/base16384-js/">
+<meta property="og:image" content="https://decodeencode.github.io/base16384-js/images/format.svg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "base16384-js",
+  "description": "An encoder and decoder for the base16384 text format in plain JavaScript, compatible with the reference command-line tool.",
+  "codeRepository": "https://github.com/DecodeEncode/base16384-js",
+  "programmingLanguage": "JavaScript",
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "version": "1.0.0",
+  "author": { "@type": "Person", "name": "Aesthetic Vulpes", "url": "https://github.com/didvc/" }
+}
+</script>
+<style>
+  :root { --bg: #f7f6f3; --panel: #ecebe7; --ink: #1b1d21; --mute: #555b63; --edge: #8a8f97; --accent: #a8392a; color-scheme: light; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #17181b; --panel: #222429; --ink: #e9e7e2; --mute: #a6abb3; --edge: #6b7079; --accent: #ef7a62; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0 auto; max-width: 860px; padding: 32px 16px 48px; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, sans-serif; }
+  h1 { margin: 0; font-size: 1.9rem; font-weight: 600; }
+  h2 { font-size: 1.1rem; margin: 2rem 0 .5rem; }
+  p { max-width: 42em; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lede { color: var(--mute); margin-top: .3rem; }
+  label { display: block; font-size: .85rem; color: var(--mute); margin: 1rem 0 .3rem; }
+  textarea, output { display: block; width: 100%; border: 1px solid var(--edge); border-radius: 6px; background: var(--panel); color: var(--ink); padding: 10px 12px; font: inherit; }
+  textarea { min-height: 90px; resize: vertical; }
+  output { min-height: 90px; font-size: 1.35rem; line-height: 1.7; overflow-wrap: anywhere; white-space: pre-wrap; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: .5rem; font-size: .9rem; color: var(--mute); }
+  button { font: inherit; color: var(--ink); background: none; border: 1px solid var(--edge); border-radius: 5px; padding: 4px 12px; min-height: 32px; cursor: pointer; }
+  pre { background: var(--panel); border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-size: .88rem; }
+  code { font-family: ui-monospace, monospace; }
+  img { max-width: 100%; height: auto; border-radius: 6px; }
+  footer { margin-top: 3rem; font-size: .85rem; color: var(--mute); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+</style>
+</head>
+<body>
+<header>
+  <h1>base16384-js</h1>
+  <p class="lede">Encode any data as printable CJK text in the base16384 format, and decode it back. Plain JavaScript, no dependencies, compatible with the reference command-line tool.</p>
+</header>
+<main>
+  <h2>Try it</h2>
+  <label for="in">Text to encode (UTF-8)</label>
+  <textarea id="in" spellcheck="false">12345678</textarea>
+  <label for="out" id="out-label">base16384</label>
+  <output id="out" for="in" lang="zh" aria-labelledby="out-label"></output>
+  <div class="row"><span id="stats" aria-live="polite"></span> <button type="button" id="copy">Copy</button></div>
+
+  <h2>Use it</h2>
+  <pre><code>import { encodeText, decodeText } from "https://decodeencode.github.io/base16384-js/v1/base16384.mjs";
+
+encodeText("12345678");     // "婌焳廔萷尀㴁"
+decodeText("婌焳廔萷尀㴁");    // "12345678"</code></pre>
+  <p>The module is also at <a href="base16384.mjs"><code>base16384.mjs</code></a>, which always serves the latest release. Functions, streams and the command-line tool are described in the <a href="https://github.com/DecodeEncode/base16384-js#readme">README</a>, and the format and every difference from the reference tool in <a href="https://github.com/DecodeEncode/base16384-js/blob/main/FORMAT.md">FORMAT.md</a>.</p>
+
+  <h2>How it works</h2>
+  <img src="images/format.svg" width="820" height="380" alt="Seven bytes become four 14-bit values and four characters; a short last group is followed by an end marker.">
+</main>
+<footer>
+  <p>An independent, unofficial implementation of the base16384 format, not affiliated with the format's authors. Not encryption. Apache License 2.0. <span id="version"></span></p>
+</footer>
+<script type="module">
+  import { encodeText, encodedLength, VERSION } from "./base16384.mjs";
+  const $ = (id) => document.getElementById(id);
+  const update = () => {
+    const bytes = new TextEncoder().encode($("in").value).length;
+    $("out").value = encodeText($("in").value);
+    $("stats").textContent = `${bytes} bytes → ${encodedLength(bytes)} characters (${2 * encodedLength(bytes)} bytes as UTF-16)`;
+  };
+  $("in").addEventListener("input", update);
+  $("copy").addEventListener("click", () => navigator.clipboard?.writeText($("out").value).catch(() => {}));
+  $("version").textContent = "v" + VERSION;
+  update();
+</script>
+</body>
+</html>
